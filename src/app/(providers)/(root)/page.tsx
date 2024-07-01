@@ -21,7 +21,7 @@ const HomePage = () => {
           return (
             <li key={pokemon.id}>
               <Link
-                href={`/detail/${pokemon.id}`}
+                href={`/pokemons/${pokemon.id}`}
                 className="flex flex-col items-center justify-center gap-2 rounded-md border p-4 shadow-md"
               >
                 <strong>{pokemon.korean_name}</strong>
