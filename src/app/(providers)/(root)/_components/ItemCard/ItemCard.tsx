@@ -1,31 +1,12 @@
-import { type VariantProps, cva } from "class-variance-authority";
 import { motion } from "framer-motion";
 import type { PokemonApiResponse } from "@/types/pokemon";
 import Image from "next/image";
 import Link from "next/link";
 
-const itemCardStyles = cva(
-  "bg-white shadow-2xl rounded-3xl flex flex-col items-center justify-center gap-4 p-6",
-  {
-    variants: {
-      hover: {
-        true: "hover:scale-110 hover:rotate-5",
-      },
-      tap: {
-        true: "active:scale-95",
-      },
-    },
-    defaultVariants: {
-      hover: true,
-      tap: true,
-    },
-  }
-);
-
 type ItemCardProps = {
   pokemon: PokemonApiResponse;
   tag?: keyof JSX.IntrinsicElements;
-} & VariantProps<typeof itemCardStyles>;
+};
 
 const ItemCard = ({ pokemon, tag = "li" }: ItemCardProps) => {
   const Comp = motion[tag as keyof typeof motion];
@@ -33,7 +14,7 @@ const ItemCard = ({ pokemon, tag = "li" }: ItemCardProps) => {
   return (
     <Comp
       key={pokemon.id}
-      className={itemCardStyles()}
+      className="bg-white shadow-2xl rounded-3xl flex flex-col items-center justify-center gap-4 p-6"
       whileHover={{ scale: 1.1, rotate: 5 }}
       whileTap={{ scale: 0.95 }}
     >
