@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sparta Next App",
-  description: "This is awesome Website",
+  title: "포켓몬 도감",
+  description: "포켓몬 도감 사이트입니다.",
 };
 
 const RootLayout = ({
