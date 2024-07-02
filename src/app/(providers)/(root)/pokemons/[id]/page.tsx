@@ -3,7 +3,6 @@ import Image from "next/image";
 
 const DetailPage = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
-
   const response = await getPokemon(id);
 
   return (
