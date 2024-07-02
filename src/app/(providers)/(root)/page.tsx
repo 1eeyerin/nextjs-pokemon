@@ -4,9 +4,10 @@ import { getPosts } from "@/api/pokemon";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import ItemCard from "./_components/ItemCard";
+import type { PokemonApiResponse } from "@/types/pokemon";
 
 const HomePage = () => {
-  const { data, isPending } = useQuery({
+  const { data = [], isPending } = useQuery<PokemonApiResponse[], Error>({
     queryKey: ["pokemons"],
     queryFn: getPosts,
   });
@@ -30,7 +31,7 @@ const HomePage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          {data.map((pokemon: any) => {
+          {data.map((pokemon: PokemonApiResponse) => {
             return <ItemCard key={pokemon.id} pokemon={pokemon} />;
           })}
         </motion.ul>

@@ -1,6 +1,8 @@
+import type { PokemonApiResponse } from "@/types/pokemon";
 import { axiosGet } from "./request";
 
-export const getPosts = () => axiosGet({ url: "/api/pokemons" });
+export const getPosts = () =>
+  axiosGet<PokemonApiResponse[]>({ url: "/api/pokemons" });
 
 export const getPokemon = (id: string) =>
   axiosGet({ url: `/api/pokemons/${id}` });

@@ -1,9 +1,9 @@
 import Chip from "@/components/Chip";
 
-interface DetailSectionProps {
+type DetailSectionProps = {
   title: string;
   items: { id: string; name: string }[];
-}
+};
 
 const DetailSection = ({ title, items }: DetailSectionProps) => (
   <div className="mb-6 text-lg text-gray-800">

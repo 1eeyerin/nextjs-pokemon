@@ -1,5 +1,6 @@
-import { cva } from "class-variance-authority";
+import { type VariantProps, cva } from "class-variance-authority";
 import { motion } from "framer-motion";
+import type { PokemonApiResponse } from "@/types/pokemon";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,7 +22,12 @@ const itemCardStyles = cva(
   }
 );
 
-const ItemCard = ({ pokemon, tag = "li" }: { pokemon: any; tag?: string }) => {
+type ItemCardProps = {
+  pokemon: PokemonApiResponse;
+  tag?: keyof JSX.IntrinsicElements;
+} & VariantProps<typeof itemCardStyles>;
+
+const ItemCard = ({ pokemon, tag = "li" }: ItemCardProps) => {
   const Comp = motion[tag as keyof typeof motion];
 
   return (
@@ -47,7 +53,7 @@ const ItemCard = ({ pokemon, tag = "li" }: { pokemon: any; tag?: string }) => {
         >
           <Image
             src={pokemon.sprites.front_default}
-            alt={pokemon.korean_name}
+            alt={pokemon.korean_name || ""}
             width={100}
             height={100}
             className="rounded-full shadow-2xl border border-gray-100 p-2 transition-transform duration-500"

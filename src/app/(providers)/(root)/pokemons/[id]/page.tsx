@@ -1,5 +1,4 @@
 import { getPokemon } from "@/api/pokemon";
-import Chip from "@/components/Chip";
 import Image from "next/image";
 import DetailSection from "./_components/DetailSection";
 

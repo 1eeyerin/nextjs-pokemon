@@ -6,29 +6,10 @@ interface RequestOptions extends AxiosRequestConfig {
   body?: any;
 }
 
-export const axiosGet = async ({ url, ...customOptions }: RequestOptions) => {
-  const response = await apiClient.get(url, customOptions);
-  return response.data;
-};
-
-export const axiosPost = async ({ url, ...customOptions }: RequestOptions) => {
-  const response = await apiClient.post(url, customOptions.body, customOptions);
-  return response.data;
-};
-
-export const axiosPatch = async ({ url, ...customOptions }: RequestOptions) => {
-  const response = await apiClient.patch(
-    url,
-    customOptions.body,
-    customOptions
-  );
-  return response.data;
-};
-
-export const axiosDelete = async ({
+export const axiosGet = async <T>({
   url,
   ...customOptions
-}: RequestOptions) => {
-  const response = await apiClient.delete(url, customOptions);
+}: RequestOptions): Promise<T> => {
+  const response = await apiClient.get(url, customOptions);
   return response.data;
 };
