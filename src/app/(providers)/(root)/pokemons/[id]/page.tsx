@@ -12,7 +12,7 @@ export const generateMetadata = async ({
   const response = await getPokemon(id);
 
   return {
-    title: `🎀 포켓몬 도감 상세: ${response.korean_name}`,
+    title: `🎀 포켓몬 도감: ${response.korean_name}`,
     description: `${response.korean_name} 정보`,
     keywords: "포켓몬, 포켓몬 도감, 포켓몬 정보",
   };

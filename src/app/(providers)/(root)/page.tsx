@@ -2,9 +2,8 @@
 
 import { getPosts } from "@/api/pokemon";
 import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import ItemCard from "./_components/ItemCard";
 
 const HomePage = () => {
   const { data, isPending } = useQuery({
@@ -32,39 +31,7 @@ const HomePage = () => {
           transition={{ duration: 1 }}
         >
           {data.map((pokemon: any) => {
-            return (
-              <motion.li
-                key={pokemon.id}
-                className="bg-white shadow-2xl rounded-3xl"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href={`/pokemons/${pokemon.id}`}
-                  className="flex flex-col items-center justify-center gap-4  p-6"
-                >
-                  <motion.strong
-                    className="text-2xl font-bold text-gray-900"
-                    whileHover={{ color: "#4F46E5" }}
-                  >
-                    {pokemon.korean_name}
-                  </motion.strong>
-                  <motion.div
-                    whileHover={{ scale: 1.2, rotate: 10 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <Image
-                      src={pokemon.sprites.front_default}
-                      alt={pokemon.korean_name}
-                      width={100}
-                      height={100}
-                      className="rounded-full shadow-2xl border border-gray-100 p-2 transition-transform duration-500"
-                    />
-                  </motion.div>
-                  <span className="text-gray-700">도감번호: {pokemon.id}</span>
-                </Link>
-              </motion.li>
-            );
+            return <ItemCard key={pokemon.id} pokemon={pokemon} />;
           })}
         </motion.ul>
       </div>

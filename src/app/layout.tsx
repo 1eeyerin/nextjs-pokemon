@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "포켓몬 도감",
+  title: "🎀 포켓몬 도감",
   description: "포켓몬 도감 사이트입니다.",
 };
 
