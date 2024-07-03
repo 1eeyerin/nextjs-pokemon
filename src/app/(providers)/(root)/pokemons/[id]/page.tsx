@@ -28,7 +28,7 @@ const DetailPage = async ({ params }: { params: { id: string } }) => {
       </div>
       <Image
         src={response.sprites.front_default}
-        alt={response.korean_name}
+        alt={response.korean_name || ""}
         width={120}
         height={120}
         className="mb-8 mx-auto rounded-full shadow-2xl border border-gray-100 animate-bounce p-4"

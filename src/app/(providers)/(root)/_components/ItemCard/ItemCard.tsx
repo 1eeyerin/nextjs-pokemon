@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import type { PokemonApiResponse } from "@/types/pokemon";
 import Image from "next/image";
 import Link from "next/link";
+import Chip from "@/components/Chip";
 
 type ItemCardProps = {
   pokemon: PokemonApiResponse;
@@ -14,13 +15,13 @@ const ItemCard = ({ pokemon, tag = "li" }: ItemCardProps) => {
   return (
     <Comp
       key={pokemon.id}
-      className="bg-white shadow-2xl rounded-3xl flex flex-col items-center justify-center gap-4 p-6"
+      className="bg-white shadow-2xl rounded-3xl flex flex-col items-center justify-center gap-4 p-6 relative"
       whileHover={{ scale: 1.1, rotate: 5 }}
       whileTap={{ scale: 0.95 }}
     >
       <Link
         href={`/pokemons/${pokemon.id}`}
-        className="flex flex-col items-center justify-center gap-4 p-6"
+        className="flex flex-col items-center justify-center gap-4 p-6 pb-20"
       >
         <motion.strong
           className="text-2xl font-bold text-gray-900"
@@ -40,7 +41,9 @@ const ItemCard = ({ pokemon, tag = "li" }: ItemCardProps) => {
             className="rounded-full shadow-2xl border border-gray-100 p-2 transition-transform duration-500"
           />
         </motion.div>
-        <span className="text-gray-700">도감번호: {pokemon.id}</span>
+        <div className="absolute bottom-4 right-4">
+          <Chip>No. {pokemon.id}</Chip>
+        </div>
       </Link>
     </Comp>
   );

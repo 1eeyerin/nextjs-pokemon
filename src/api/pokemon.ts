@@ -5,4 +5,4 @@ export const getPosts = () =>
   axiosGet<PokemonApiResponse[]>({ url: "/api/pokemons" });
 
 export const getPokemon = (id: string) =>
-  axiosGet({ url: `/api/pokemons/${id}` });
+  axiosGet<PokemonApiResponse>({ url: `/api/pokemons/${id}` });
