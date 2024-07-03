@@ -1,6 +1,7 @@
 import { getPokemon } from "@/api/pokemon";
 import Image from "next/image";
 import DetailSection from "./_components/DetailSection";
+import HistoryBackBtn from "./_components/HistoryBackBtn";
 
 type ParamsProps = {
   params: { id: string };
@@ -23,6 +24,7 @@ const DetailPage = async ({ params }: ParamsProps) => {
 
   return (
     <>
+      <HistoryBackBtn />
       <div className="text-3xl font-extrabold text-gray-900 mb-14 text-center">
         {response.korean_name}
       </div>
@@ -40,22 +42,22 @@ const DetailPage = async ({ params }: ParamsProps) => {
       </div>
       <DetailSection
         title="타입"
-        items={response.types.map(({ type }: any) => ({
-          id: type.id,
+        items={response.types.map(({ type }) => ({
+          id: type.name,
           name: type.korean_name,
         }))}
       />
       <DetailSection
         title="특성"
-        items={response.abilities.map(({ ability }: any) => ({
-          id: ability.id,
+        items={response.abilities.map(({ ability }) => ({
+          id: ability.name,
           name: ability.korean_name,
         }))}
       />
       <DetailSection
         title="기술"
-        items={response.moves.map(({ move }: any) => ({
-          id: move.id,
+        items={response.moves.map(({ move }) => ({
+          id: move.name,
           name: move.korean_name,
         }))}
       />

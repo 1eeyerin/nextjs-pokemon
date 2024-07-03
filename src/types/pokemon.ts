@@ -1,11 +1,16 @@
 type NameUrlType = { name: string; url: string };
 
-export interface PokemonApiResponse {
+export type ChipValueType<IsDetail extends boolean = false> = NameUrlType &
+  (IsDetail extends true
+    ? Pick<PokemonApiResponse<IsDetail>, "korean_name">
+    : {});
+
+export interface PokemonApiResponse<IsDetail extends boolean = false> {
   sprites: SpritesImagesTypes & { other: SpritesOtherTypes } & {
     versions: SpritesVersionTypes;
   };
   abilities: {
-    ability: NameUrlType;
+    ability: ChipValueType<IsDetail>;
     is_hidden: boolean;
     slot: number;
   }[];
@@ -15,7 +20,7 @@ export interface PokemonApiResponse {
     version: NameUrlType;
   }[];
   moves: {
-    move: NameUrlType;
+    move: ChipValueType<IsDetail>;
     version_group_details: {
       level_learned_at: number;
       move_learn_method: NameUrlType;
@@ -26,7 +31,7 @@ export interface PokemonApiResponse {
   forms: NameUrlType[];
   types: {
     slot: number;
-    type: NameUrlType;
+    type: ChipValueType<IsDetail>;
   }[];
   stats: {
     base_stat: number;
@@ -44,7 +49,7 @@ export interface PokemonApiResponse {
   past_abilities: [];
   past_types: [];
   weight: number;
-  korean_name: string | null;
+  korean_name?: string | null;
 }
 
 const SPRITES_IMAGE_KEYS = {

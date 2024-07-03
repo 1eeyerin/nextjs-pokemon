@@ -1,5 +1,5 @@
 import apiClient from ".";
-import type { AxiosRequestConfig } from "axios";
+import type { AxiosRequestConfig, AxiosResponse } from "axios";
 
 interface RequestOptions extends AxiosRequestConfig {
   url: string;

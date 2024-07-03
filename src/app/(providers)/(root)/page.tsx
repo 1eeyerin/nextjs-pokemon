@@ -7,7 +7,7 @@ import ItemCard from "./_components/ItemCard";
 import type { PokemonApiResponse } from "@/types/pokemon";
 
 const HomePage = () => {
-  const { data = [], isPending } = useQuery<PokemonApiResponse[], Error>({
+  const { data = [], isPending } = useQuery<PokemonApiResponse[]>({
     queryKey: ["pokemons"],
     queryFn: getPosts,
   });
@@ -31,7 +31,7 @@ const HomePage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          {data.map((pokemon: PokemonApiResponse) => {
+          {data.map((pokemon) => {
             return <ItemCard key={pokemon.id} pokemon={pokemon} />;
           })}
         </motion.ul>

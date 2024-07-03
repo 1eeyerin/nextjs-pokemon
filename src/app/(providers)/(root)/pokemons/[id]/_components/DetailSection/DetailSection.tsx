@@ -1,8 +1,9 @@
 import Chip from "@/components/Chip";
+import type { ChipValueType } from "@/types/pokemon";
 
 type DetailSectionProps = {
-  title: string;
-  items: { id: string; name: string }[];
+  title: ChipValueType<true>["name"];
+  items: { id: string; name: ChipValueType<true>["korean_name"] }[];
 };
 
 const DetailSection = ({ title, items }: DetailSectionProps) => (
