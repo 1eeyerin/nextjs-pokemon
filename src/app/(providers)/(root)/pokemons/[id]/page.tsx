@@ -2,22 +2,22 @@ import { getPokemon } from "@/api/pokemon";
 import Image from "next/image";
 import DetailSection from "./_components/DetailSection";
 
-export const generateMetadata = async ({
-  params,
-}: {
+type ParamsProps = {
   params: { id: string };
-}) => {
+};
+
+export const generateMetadata = async ({ params }: ParamsProps) => {
   const { id } = params;
   const response = await getPokemon(id);
 
   return {
-    title: `🎀 포켓몬 도감: ${response.korean_name}`,
-    description: `${response.korean_name} 정보`,
+    title: `🎀 포켓몬 도감: ${response.korean_name || ""}`,
+    description: `${response.korean_name || ""} 정보`,
     keywords: "포켓몬, 포켓몬 도감, 포켓몬 정보",
   };
 };
 
-const DetailPage = async ({ params }: { params: { id: string } }) => {
+const DetailPage = async ({ params }: ParamsProps) => {
   const { id } = params;
   const response = await getPokemon(id);
 
