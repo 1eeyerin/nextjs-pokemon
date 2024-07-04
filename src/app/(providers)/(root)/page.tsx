@@ -1,6 +1,6 @@
 "use client";
 
-import { getPosts } from "@/api/pokemon";
+import { getPokemons } from "@/api/pokemon";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import ItemCard from "./_components/ItemCard";
@@ -9,7 +9,7 @@ import type { PokemonApiResponse } from "@/types/pokemon";
 const HomePage = () => {
   const { data = [], isPending } = useQuery<PokemonApiResponse[]>({
     queryKey: ["pokemons"],
-    queryFn: getPosts,
+    queryFn: getPokemons,
   });
 
   if (isPending) return null;
