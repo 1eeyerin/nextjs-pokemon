@@ -72,12 +72,10 @@ type SpritesImagesTypes = {
   [key in keyof typeof SPRITES_FEMALE_IMAGE_KEYS]: string | null;
 };
 
-type SpritesOtherTypes = {
-  dream_world: Partial<SpritesImagesTypes>;
-  home: Partial<SpritesImagesTypes>;
-  ["official-artwork"]: Partial<SpritesImagesTypes>;
-  showdown: Partial<SpritesImagesTypes>;
-};
+type SpritesOtherTypes = Record<
+  "dream_world" | "home" | "official-artwork" | "showdown",
+  Partial<SpritesImagesTypes>
+>;
 
 type SpritesVersionTypes = {
   [key: string]: {
