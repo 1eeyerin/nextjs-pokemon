@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import type { PokemonApiResponse } from "@/types/pokemon";
+import type { Pokemon } from "@/types/pokemon";
 import Image from "next/image";
 import Link from "next/link";
 import Chip from "@/components/Chip";
 
 type ItemCardProps = {
-  pokemon: PokemonApiResponse;
+  pokemon: Pokemon;
   tag?: keyof typeof motion;
 };
 

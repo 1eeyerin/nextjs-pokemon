@@ -1,8 +1,11 @@
-import type { PokemonApiResponse } from "@/types/pokemon";
+import type {
+  PokemonDetailResponse,
+  PokemonListResponse,
+} from "@/types/pokemon";
 import { axiosGet } from "./request";
 
-export const getPokemons = () =>
-  axiosGet<PokemonApiResponse[]>({ url: "/api/pokemons" });
+export const getPokemons = ({ page = 1 }) =>
+  axiosGet<PokemonListResponse>({ url: `/api/pokemons?page=${page}` });
 
 export const getPokemon = (id: string) =>
-  axiosGet<PokemonApiResponse<true>>({ url: `/api/pokemons/${id}` });
+  axiosGet<PokemonDetailResponse>({ url: `/api/pokemons/${id}` });

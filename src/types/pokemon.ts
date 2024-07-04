@@ -1,11 +1,12 @@
-type NameUrlType = { name: string; url: string };
+export interface PokemonListResponse {
+  data: Pokemon<false>[];
+  totalPages: number;
+  hasNextPage: boolean;
+}
 
-export type ChipValueType<IsDetail extends boolean = false> = NameUrlType &
-  (IsDetail extends true
-    ? Pick<PokemonApiResponse<IsDetail>, "korean_name">
-    : {});
+export type PokemonDetailResponse = Pokemon<true>;
 
-export interface PokemonApiResponse<IsDetail extends boolean = false> {
+export interface Pokemon<IsDetail extends boolean = false> {
   sprites: SpritesImagesTypes & { other: SpritesOtherTypes } & {
     versions: SpritesVersionTypes;
   };
@@ -51,6 +52,11 @@ export interface PokemonApiResponse<IsDetail extends boolean = false> {
   weight: number;
   korean_name?: string | null;
 }
+
+type NameUrlType = { name: string; url: string };
+
+export type ChipValueType<IsDetail extends boolean = false> = NameUrlType &
+  (IsDetail extends true ? Pick<Pokemon<IsDetail>, "korean_name"> : {});
 
 const SPRITES_IMAGE_KEYS = {
   back_default: "back_default",
