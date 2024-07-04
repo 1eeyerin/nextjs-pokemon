@@ -6,11 +6,11 @@ import Chip from "@/components/Chip";
 
 type ItemCardProps = {
   pokemon: PokemonApiResponse;
-  tag?: keyof JSX.IntrinsicElements;
+  tag?: keyof typeof motion;
 };
 
 const ItemCard = ({ pokemon, tag = "li" }: ItemCardProps) => {
-  const Comp = motion[tag as keyof typeof motion];
+  const Comp = motion[tag];
 
   return (
     <Comp
