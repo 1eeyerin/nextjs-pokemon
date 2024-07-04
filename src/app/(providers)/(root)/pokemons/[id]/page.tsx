@@ -1,8 +1,8 @@
 import { getPokemon } from "@/api/pokemon";
 import Image from "next/image";
-import DetailSection from "./_components/DetailSection";
 import HistoryBackBtn from "./_components/HistoryBackBtn";
 import AudioPlayer from "./_components/AudioPlayer";
+import DetailContents from "./_components/DetailContents";
 
 type ParamsProps = {
   params: { id: string };
@@ -37,32 +37,7 @@ const DetailPage = async ({ params }: ParamsProps) => {
         height={120}
         className="mb-8 mx-auto rounded-full shadow-2xl border border-gray-100 animate-bounce p-4"
       />
-      <div className="mb-6 text-lg text-gray-800 flex">
-        <span className="font-semibold">키: </span> {response.height}m
-        <span className="font-semibold ml-4">무게: </span> {response.weight}
-        kg
-      </div>
-      <DetailSection
-        title="타입"
-        items={response.types.map(({ type }) => ({
-          id: type.name,
-          name: type.korean_name,
-        }))}
-      />
-      <DetailSection
-        title="특성"
-        items={response.abilities.map(({ ability }) => ({
-          id: ability.name,
-          name: ability.korean_name,
-        }))}
-      />
-      <DetailSection
-        title="기술"
-        items={response.moves.map(({ move }) => ({
-          id: move.name,
-          name: move.korean_name,
-        }))}
-      />
+      <DetailContents response={response} />
     </>
   );
 };
