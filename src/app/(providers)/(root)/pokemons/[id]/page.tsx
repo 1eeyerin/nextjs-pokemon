@@ -2,6 +2,7 @@ import { getPokemon } from "@/api/pokemon";
 import Image from "next/image";
 import DetailSection from "./_components/DetailSection";
 import HistoryBackBtn from "./_components/HistoryBackBtn";
+import AudioPlayer from "./_components/AudioPlayer";
 
 type ParamsProps = {
   params: { id: string };
@@ -25,6 +26,7 @@ const DetailPage = async ({ params }: ParamsProps) => {
   return (
     <>
       <HistoryBackBtn />
+      <AudioPlayer src={response.cries.latest} />
       <div className="text-3xl font-extrabold text-gray-900 mb-14 text-center">
         {response.korean_name}
       </div>
