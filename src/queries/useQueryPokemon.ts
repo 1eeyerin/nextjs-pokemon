@@ -7,7 +7,7 @@ export const useQueryPokemon = () => {
     PokemonListResponse,
     Error,
     PokemonListResponse["data"],
-    string[],
+    [string],
     number
   >({
     queryKey: ["pokemons"],
