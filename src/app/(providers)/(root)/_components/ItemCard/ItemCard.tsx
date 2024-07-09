@@ -22,6 +22,7 @@ const ItemCard = ({ pokemon, tag = "li" }: ItemCardProps) => {
       <Link
         href={`/pokemons/${pokemon.id}`}
         className="flex flex-col items-center justify-center gap-4 p-6 pb-20"
+        prefetch
       >
         <motion.strong
           className="text-2xl font-bold text-gray-900"
