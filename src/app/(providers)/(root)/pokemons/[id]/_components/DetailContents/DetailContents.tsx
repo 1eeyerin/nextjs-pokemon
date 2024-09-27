@@ -48,7 +48,7 @@ const DetailContents = ({ response }: DetailContentsProps) => {
         ))}
       </DetailSection>
       <DetailSection title="기술">
-        {response.moves.map(({ move }, index) => (
+        {response.moves.slice(0, 12).map(({ move }, index) => (
           <motion.div
             key={move.name}
             transition={{ delay: index * 0.1 }}
